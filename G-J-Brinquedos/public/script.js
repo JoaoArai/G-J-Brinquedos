@@ -1,6 +1,6 @@
 async function carregarProdutos() {
   const resposta = await fetch(
-    'https://stackblitzstarterskhsl7h4f-ohou--3000--87cf54cd.local-credentialless.webcontainer.io/produtos'
+    'https://g-j-brinquedos.onrender.com/produtos'
   );
 
   const produtos = await resposta.json();
