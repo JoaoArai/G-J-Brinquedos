@@ -1,9 +1,9 @@
 let produtosAtuais = [];
 
-async function carregarProdutos(categoria = "") {
+async function carregarProdutos(categoria = "", busca = "") {
   try {
     const resposta = await fetch(
-      `https://g-j-brinquedos.onrender.com/produtos?categoria=${categoria}`
+      `https://g-j-brinquedos.onrender.com/produtos?categoria=${categoria}&busca=${busca}`
     );
 
     produtosAtuais = await resposta.json();
@@ -77,6 +77,14 @@ document.querySelectorAll("[data-category]").forEach((botao) => {
 
     carregarProdutos(categoria);
   });
+});
+
+document.querySelector(".search").addEventListener("submit", (event) => {
+  event.preventDefault();
+
+  const busca = document.querySelector("#pesquisa").value.trim();
+
+  carregarProdutos("", busca);
 });
 
 document.querySelector("#ordenacao").addEventListener("change", (event) => {
