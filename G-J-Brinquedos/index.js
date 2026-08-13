@@ -41,7 +41,8 @@ app.get("/produtos", (req, res) => {
 
   if (busca) {
     resultado = resultado.filter((produto) =>
-      produto.nome.toLowerCase().includes(busca.toLowerCase())
+      produto.nome.toLowerCase().includes(busca.toLowerCase()) ||
+      produto.categoria.toLowerCase().includes(busca.toLowerCase())
     );
   }
 
