@@ -10,18 +10,21 @@ const produtos = [
     nome: 'Mouse Gamer',
     preco: 199.9,
     imagem: 'https://picsum.photos/300?1',
+    categorias: 'Funko pop',
   },
   {
     id: 2,
     nome: 'Teclado Mecânico',
     preco: 299.9,
     imagem: 'https://picsum.photos/300?2',
+    categorias: 'Funko pop',
   },
   {
     id: 3,
     nome: 'Monitor Gamer',
     preco: 999.9,
     imagem: 'https://picsum.photos/300?3',
+    categorias: 'Legos',
   },
 ];
 
