@@ -1,4 +1,4 @@
-const express = require('express');
+const express = require("express");
 
 const app = express();
 
@@ -7,31 +7,47 @@ app.use(express.static("public"));
 const produtos = [
   {
     id: 1,
-    nome: 'Mouse Gamer',
+    nome: "Mouse Gamer",
     preco: 199.9,
-    imagem: 'https://picsum.photos/300?1',
-    categorias: 'Funko pop',
+    imagem: "https://picsum.photos/300?1",
+    categoria: "Funko pop",
   },
   {
     id: 2,
-    nome: 'Teclado Mecânico',
+    nome: "Teclado Mecânico",
     preco: 299.9,
-    imagem: 'https://picsum.photos/300?2',
-    categorias: 'Funko pop',
+    imagem: "https://picsum.photos/300?2",
+    categoria: "Funko pop",
   },
   {
     id: 3,
-    nome: 'Monitor Gamer',
+    nome: "Monitor Gamer",
     preco: 999.9,
-    imagem: 'https://picsum.photos/300?3',
-    categorias: 'Legos',
+    imagem: "https://picsum.photos/300?3",
+    categoria: "Legos",
   },
 ];
 
-app.get('/produtos', (req, res) => {
-  res.json(produtos);
+app.get("/produtos", (req, res) => {
+  const { categoria, busca } = req.query;
+
+  let resultado = produtos;
+
+  if (categoria) {
+    resultado = resultado.filter(
+      (produto) => produto.categoria === categoria
+    );
+  }
+
+  if (busca) {
+    resultado = resultado.filter((produto) =>
+      produto.nome.toLowerCase().includes(busca.toLowerCase())
+    );
+  }
+
+  res.json(resultado);
 });
 
 app.listen(3000, () => {
-  console.log('Servidor rodando!');
+  console.log("Servidor rodando!");
 });
